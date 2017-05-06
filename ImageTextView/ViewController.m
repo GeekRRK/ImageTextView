@@ -26,6 +26,19 @@
     return (int)(from + (arc4random() % (to - from + 1)));
 }
 
+- (CGSize)fitsize:(CGSize)thisSize byFixedSize:(CGSize)fixedSize {
+    if(thisSize.width == 0 && thisSize.height == 0) {
+        return CGSizeMake(0, 0);
+    }
+    
+    CGFloat wscale = thisSize.width / fixedSize.width;
+    CGFloat hscale = thisSize.height / fixedSize.height;
+    CGFloat scale = (wscale > hscale) ? wscale : hscale;
+    CGSize newSize = CGSizeMake(thisSize.width / scale, thisSize.height / scale);
+    
+    return newSize;
+}
+
 - (UIImage *)originImage:(UIImage *)image scaleToSize:(CGSize)size {
     UIGraphicsBeginImageContext(size);
     
@@ -69,7 +82,9 @@
     NSData *imgData = UIImageJPEGRepresentation(image, 0);
     UIImage *img = [UIImage imageWithData:imgData];
     
-    UIImage *newImg = [self originImage:img scaleToSize:CGSizeMake(50, 50)];
+    CGSize fixedSize = CGSizeMake(50, 50);
+    CGSize scaleFixedSize = [self fitsize:img.size byFixedSize:fixedSize];
+    UIImage *newImg = [self originImage:img scaleToSize:scaleFixedSize];
     
     [self appendImg:newImg];
     
