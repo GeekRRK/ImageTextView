@@ -68,15 +68,15 @@
 				AE58435B1CAA0D9F00637F51 /* AppDelegate.m */,
 				AE58435D1CAA0D9F00637F51 /* ViewController.h */,
 				AE58435E1CAA0D9F00637F51 /* ViewController.m */,
+				AE58436E1CAA21C600637F51 /* EmojiTextAttachment.h */,
+				AE58436F1CAA21C600637F51 /* EmojiTextAttachment.m */,
+				AE5843711CAA231A00637F51 /* NSAttributedString+EmojiExtension.h */,
+				AE5843721CAA231A00637F51 /* NSAttributedString+EmojiExtension.m */,
 				AE5843601CAA0D9F00637F51 /* Main.storyboard */,
 				AE5843631CAA0D9F00637F51 /* Assets.xcassets */,
 				AE5843651CAA0D9F00637F51 /* LaunchScreen.storyboard */,
 				AE5843681CAA0D9F00637F51 /* Info.plist */,
 				AE5843571CAA0D9F00637F51 /* Supporting Files */,
-				AE58436E1CAA21C600637F51 /* EmojiTextAttachment.h */,
-				AE58436F1CAA21C600637F51 /* EmojiTextAttachment.m */,
-				AE5843711CAA231A00637F51 /* NSAttributedString+EmojiExtension.h */,
-				AE5843721CAA231A00637F51 /* NSAttributedString+EmojiExtension.m */,
 			);
 			path = ImageTextView;
 			sourceTree = "<group>";
@@ -314,6 +314,7 @@
 				AE58436D1CAA0D9F00637F51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -16,10 +16,6 @@
 
 @implementation ViewController
 
-- (IBAction)cancelKeyBoard:(id)sender {
-    [self.view endEditing:YES];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -42,6 +38,18 @@
     return scaledImage;
 }
 
+- (void)appendImg:(UIImage *)img {
+    EmojiTextAttachment *attachment = [[EmojiTextAttachment alloc] init];
+    attachment.emojiTag = [NSString stringWithFormat:@"%d", [self getRandomNumber:1 to:1000]];
+    attachment.image = img;
+    NSAttributedString *attributeStr = [NSAttributedString attributedStringWithAttachment:attachment];
+    [self.imgTxtView.textStorage insertAttributedString:attributeStr atIndex:self.imgTxtView.selectedRange.location];
+}
+
+- (IBAction)cancelKeyBoard:(id)sender {
+    [self.view endEditing:YES];
+}
+
 - (IBAction)openAlbum:(id)sender {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary] == YES) {
         UIImagePickerController * imagePicker = [[UIImagePickerController alloc]init];
@@ -55,14 +63,6 @@
 - (IBAction)post:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"帖子内容" message:[self.imgTxtView.textStorage getPlainString] delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     [alert show];
-}
-
-- (void)appendImg:(UIImage *)img {
-    EmojiTextAttachment *attachment = [[EmojiTextAttachment alloc] init];
-    attachment.emojiTag = [NSString stringWithFormat:@"%d", [self getRandomNumber:1 to:1000]];
-    attachment.image = img;
-    NSAttributedString *attributeStr = [NSAttributedString attributedStringWithAttachment:attachment];
-    [self.imgTxtView.textStorage insertAttributedString:attributeStr atIndex:self.imgTxtView.selectedRange.location];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo{
